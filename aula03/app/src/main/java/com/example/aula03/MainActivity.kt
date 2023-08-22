@@ -8,6 +8,7 @@ class MainActivity : AppCompatActivity() {
     lateinit var amb: ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        amb = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(amb.root)
     }
 }
