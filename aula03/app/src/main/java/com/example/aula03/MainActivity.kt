@@ -1,12 +1,17 @@
 package com.example.aula03
 
+import android.app.ActionBar.LayoutParams
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.EditText
+import android.widget.LinearLayout
+import androidx.appcompat.app.ActionBar
 import com.example.aula03.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
     private lateinit var amb: ActivityMainBinding
+    private lateinit var dinamicoEt: EditText
     private companion object{
         const val CICLO_PDM = "CICLO_PDM"
     }
@@ -14,6 +19,16 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         amb = ActivityMainBinding.inflate(layoutInflater)
         setContentView(amb.root)
+
+        val parametroView = ActionBar.LayoutParams(
+            LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT
+        )
+
+        parametroView.setMargins(0, 0, 0, 0)
+        dinamicoEt = EditText(this)
+        dinamicoEt.hint = "EditText dinâmico"
+        dinamicoEt.layoutParams = parametroView
+        amb.root.addView(dinamicoEt)
 
         Log.v(CICLO_PDM, "onCreate: Iniciando ciclo COMPLETO")
     }
